@@ -1,0 +1,332 @@
+$font-family-sans-serif: "Hind",
+Helvetica,
+Arial,
+sans-serif !default;
+$font-family-serif: Georgia,
+"Times New Roman",
+Times,
+serif !default;
+@import "bootstrap";
+$font-family-base: $font-family-sans-serif;
+$headings-font-family: inherit !default;
+$headings-font-family: "Rubik",
+"Helvetica Neue",
+Helvetica,
+Arial,
+sans-serif!default;
+// Brand colors
+$orange: #fbad17;
+$blue: #20334d;
+$light-blue: #5dc6e1;
+$white: #fff;
+$green: #2acba2;
+$purple: #836DAF;
+$dark-blue: #343f51;
+$red: #dd4212;
+
+$text-color: $blue;
+
+$text-color-light-gray: #b9c3ce;
+$text-color-light: $text-color-light-gray;
+
+$text-color-dark-gray: #888f98;
+
+$border-radius-base: 2px;
+
+@import "global";
+@import "buttons";
+@import "forms";
+
+/*@import "animation";*/
+
+$use-fadeIn: true;
+$use-fadeIn: true;
+$use-fadeOut: true;
+$use-fadeInUp: true;
+$use-slideInDown: true;
+@import "../bower_components/animate-sass/_animate.scss";
+@import "navigation";
+@import "footer";
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Rubik", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+}
+
+body {
+    max-width: 2300px;
+    margin: 0 auto
+}
+
+section {
+    padding: 50px 0;
+    @media (min-width: 1600px) {
+        padding: 100px;
+    }
+}
+
+.wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    @media (max-width: $screen-sm) {
+        padding: 0px 50px;
+    }
+    @media (max-width: $screen-xs) {
+        padding: 0px 35px;
+    }
+}
+
+.dark-bg {
+    background: $blue;
+    color: #fff
+}
+
+.section-header {
+    padding-top: 40px;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    h2 {
+        text-transform: uppercase;
+        margin: 0;
+        margin-bottom: 5px;
+        color: $text-color;
+        font-size: 40px;
+    }
+    p {
+        font-size: 20px;
+        font-weight: 500;
+        color: $text-color-dark-gray;
+    }
+    hr {
+        width: 120px;
+        border: 2px solid $light-blue;
+        margin-top: 20px;
+    }
+    margin-bottom: 60px;
+    @media (max-width: $screen-xs) {
+        p {
+            font-size: 16px
+        }
+        h2 {
+            font-size: 30px;
+        }
+        padding-top: 20px;
+    }
+}
+
+#home {
+    position: relative;
+    background: $blue;
+    z-index: 100;
+   background: url(../videos/honeytrap-background.jpg);
+
+    background-size: cover;
+    padding: 0px;
+    padding-top: 20px;
+    .color-overlay {
+        background: $blue;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        opacity: 0.7;
+        -webkit-transition: all 0.5s;
+        text-align: center;
+    }
+    h1 {
+        margin: 0 auto;
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 45px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-top: 0;
+        line-height: 1.4
+    }
+    p {
+        font-size: 25px;
+        color: $text-color-light;
+        font-weight: 500;
+        margin: 10px 0;
+        margin-bottom: 30px;
+        max-width: 800px;
+        letter-spacing: 1px;
+        line-height: 1.3;
+    }
+    .hero {
+        align-self: center;
+    }
+
+/*    @media (max-width: $screen-sm) {
+        .hero-container {
+            padding-top: 50px;
+            padding-bottom: 70px;
+            h1 {
+                font-size: 30px;
+            }
+            p {
+                font-size: 20px;
+            }
+        }
+    }*/
+    @media (max-width: $screen-xs) {
+        h1 {
+            font-size: 17px;
+        }
+        p {
+            font-size: 14px;
+        }
+        .hero {
+            padding-top: 10px;
+        }
+        .hero-container {
+            padding-top: 30px;
+            padding-bottom: 60px;
+        }
+        .btn {
+            width: 100%;
+            margin-top: 10px;
+            margin-left: 0;
+        }
+        #email {
+            width: 100%;
+            text-align: center;
+            margin-right: 0;
+        }
+    }
+    
+        @media (min-width: 500px) {
+        .hero-container {
+            padding-top: 40px;
+            padding-bottom: 50px;
+        }
+        h1 {
+            font-size: 30px;
+        }
+        p {
+            font-size: 18px;
+        }
+    }
+      @media (min-width: 900px) {
+        .hero-container {
+            padding-top: 130px;
+            padding-bottom: 160px;
+        }
+        h1 {
+            font-size: 45px;
+        }
+        p {
+            font-size: 25px;
+        }
+          
+    }
+}
+
+#info {
+    .icon-container {
+        height: 100%;
+    }
+    .sub-heading {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 21px;
+        margin-top: 40px;
+    }
+    img {
+        float: left;
+        max-width: 100%;
+    }
+    h3 {
+        font-size: 16px;
+    }
+    h3 {
+        margin: 0;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+    .icon {
+        p {
+            font-size: 18px;
+            color: $text-color-dark-gray;
+        }
+    }
+    .row {
+        margin-top: 30px;
+    }
+    @media (max-width: $screen-xs) {
+        .icon {
+            p {
+                font-size: 16px;
+            }
+        }
+            .row {
+        margin-top: 0;
+    }
+        .col-xs-12 {
+            margin-top: 30px;
+        }
+    }
+}
+
+#text {
+    text-align: left;
+    position: relative;
+    padding: 90px 0;
+    background: url(../images/divider-bg.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    p {
+        font-weight: 400;
+        line-height: 1.4;
+        font-size: 36px;
+        color: #fff;
+    }
+    .color-overlay {
+        background: $blue;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        opacity: 0.7;
+        -webkit-transition: all 0.5s;
+        text-align: center;
+    }
+    .wrap {
+        position: relative;
+    }
+    @media (max-width: $screen-xs) {
+        p {
+            font-size: 22px;
+        }
+        padding: 35px 0;
+    }
+}
+
+#contact {
+    padding: 70px 0;
+    text-align: center;
+    background: url(../images/contact-bg.svg);
+    background-size: 100%;
+    background-position: center;
+    background-position-x: 10px;
+    background-position: right;
+    background-repeat: no-repeat;
+    .btn {
+        margin-bottom: 50px;
+    }
+    @media (min-width: 1200px) {
+        background-position: 0px -150px;
+    }
+    @media (max-width: $screen-xs) {
+        background-position: -50px -50px;
+        background-size: 200%
+    }
+}

@@ -1,0 +1,16 @@
+{{ partial "header.html" . }}
+    {{ partial "aside.html" . }}   
+    {{ range first 10 .Data.Pages }}
+    <article>
+        <header> 
+            <h1><a href="{{ .Permalink }}">{{ .Title }} </a></h1>
+        </header>
+        {{ .Summary }} 
+        
+
+    </article>
+    {{ end }}
+           <div class=""><a href="">tis</a></div>
+
+    {{ partial "pagination.html" .Paginator }}         
+{{ partial "footer.html" . }}

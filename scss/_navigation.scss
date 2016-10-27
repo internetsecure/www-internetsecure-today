@@ -1,0 +1,103 @@
+.brand {
+    font-family: "Rubik", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    color: $orange;
+    line-height: 50px;
+    font-size: 24px;
+    &:hover {
+        text-decoration: none;
+        color: darken($orange, 10%)
+    }
+}
+
+.navbar {
+    padding-top: 15px;
+    .nav a {
+        text-transform: uppercase;
+        color: $text-color-light;
+        margin-left: 10px;
+        &:hover {
+            background: none;
+            color: $light-blue;
+        }
+    }
+    background: none;
+    border-radius: 0px;
+    margin: 0;
+    z-index: 100;
+}
+
+.navbar-nav {
+    list-style: none;
+    a {
+        text-transform: uppercase;
+        color: $text-color-light;
+        margin-left: 35px;
+        font-weight: 500;
+        &:hover {
+            background: none;
+            color: $light-blue;
+        }
+    }
+    li {
+        &:hover {
+            background: none;
+            color: $light-blue;
+        }
+    }
+}
+
+.footer-nav {
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+.navigation {
+    max-width: 800px;
+    margin: 0 auto;
+    ul {
+        width: 100%;
+    }
+    a {
+        text-transform: uppercase;
+        font-weight: 600;
+        color: $text-color-light;
+        letter-spacing: 1px;
+        text-decoration: none;
+        padding-bottom: 6px;
+        display: block;
+        font-size: 11px;
+        &:after {
+            clear: both;
+            display: block;
+            content: "";
+            position: relative;
+            width: 0;
+            left: 50%;
+            height: 3px;
+            background: $light-blue;
+            @include transition(width .2s, left .2s);
+            border-radius: 6px;
+        }
+        &:active {
+            background: none;
+        }
+        &:hover,
+        &:focus {
+            &:after {
+                width: 100%;
+                left: 0;
+            }
+        }
+        &:focus {
+            background: none;
+        }
+    }
+}
+
+.nav > li > a:focus {
+    background: none;
+    &:after {
+        width: 0;
+    }
+}

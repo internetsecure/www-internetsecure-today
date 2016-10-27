@@ -1,0 +1,24 @@
+#email {
+    border-radius: $border-radius-base;
+    padding: 8px 20px;
+    font-size: 16px;
+    line-height: 2;
+    border: 1px solid #fff;
+    margin-right: 5px;
+    vertical-align: middle;
+    color: $text-color-light;
+    &:focus {
+        outline: none;
+
+    }
+}
+input {
+  background-color: #FFFFFF;
+    transition:box-shadow 0.2s linear 0s;
+}
+
+input:focus {
+  border-color: rgba(82, 168, 236, 0.9);
+    box-shadow: 0 3px 3px rgba(93, 198, 225, 0.2) inset, 0 0 16px rgba(82, 168, 236, 0.7);
+    outline: 0 none;
+}

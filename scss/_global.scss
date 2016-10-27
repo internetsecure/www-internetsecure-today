@@ -1,0 +1,20 @@
+
+::selection {
+  background: $light-blue; 
+    color: #fff;
+}
+::-moz-selection {
+  background: $light-blue; 
+    color: #fff;
+}
+
+a {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
