@@ -8,10 +8,18 @@
 <script src="js/jquery.fittext.js"></script>
 <script src="js/jquery.scrollreveal.min.js"></script>
 <script src="js/jquery.vide.min.js"></script>
+<script src="js/jquery.circliful.min.js"></script>
 <script src="js/angular/angular.js"></script>
 <script src="js/main.js"></script>
 
-{{ "<!-- endbuild -->" | safeHTML }}
+<script>
+$( document ).ready(function() {
+    $('.stats.circle').circliful();
+});
+</script>
 
+
+
+{{ "<!-- endbuild -->" | safeHTML }}
 
 
