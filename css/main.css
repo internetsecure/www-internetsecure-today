@@ -2795,7 +2795,7 @@ body {
   max-width: 400px; }
 
 .navigation {
-  max-width: 300px;
+  max-width: 800px;
   margin: 0 auto; }
   .navigation ul {
     width: 100%; }
@@ -2807,7 +2807,7 @@ body {
     text-decoration: none;
     padding-bottom: 6px;
     display: block;
-    font-size: 12px; }
+    font-size: 11px; }
     .navigation a:after {
       clear: both;
       display: block;
