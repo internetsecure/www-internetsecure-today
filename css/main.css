@@ -3111,4 +3111,8 @@ section {
 .donate img {
   width: 200px; }
 
+#meta {
+  width: 200px;
+  float: right; }
+
 /*# sourceMappingURL=main.css.map */

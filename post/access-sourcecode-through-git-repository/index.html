@@ -1,0 +1,365 @@
+
+
+<!doctype html>
+
+
+
+
+<html class="no-js" lang="">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>How I had access to the sourcecode of more than 10.000 websites within just a few hours.</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="INDEX, FOLLOW">
+
+    <link href='https://fonts.googleapis.com/css?family=Hind:400,500,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Rubik:500,700,400,900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+     <!-- build:css css/main.min.css -->
+    <link rel="stylesheet" href="/css/main.css">
+     <!-- endbuild -->
+
+</head>
+
+<body id="top" class="animated fadeIn">
+    
+
+
+<section id="home" class=" "   data-vide-bg="videos/honeytrap-background" data-vide-options="playbackRate: 0.7, position: 0% 0%">
+  <div class="navbar" id="navbar">
+    <div class="wrap">
+	<a class="brand" rel="home" href="/">  
+	    InternetSecure.today
+	</a>
+        <ul class="navigation navbar-nav navbar-right hidden-xs">
+            <li>
+    <a href="#navbar" class="scrollto">Home</a>
+</li>
+<li>
+    <a href="#info" class="scrollto">About </a>
+</li>
+<li>
+    <a href="#stats" class="scrollto">Statistics </a>
+</li>
+<li>
+    <a href="#campaigns" class="scrollto">Campaigns </a>
+</li>
+<li>
+    <a href="#sponsors" class="scrollto">Sponsors </a>
+</li>
+<li>
+    <a href="#team" class="scrollto">Team </a>
+</li>
+<li>
+    <a href="#contact" class="scrollto">Contact</a>
+</li>
+<li>
+    <a href="https://twitter.com/internetsecuretoday" class="twitter-follow-button text-center" data-show-count="false">Twitter</a>
+</li>
+
+        </ul>
+    </div>
+</div>
+
+</section>
+
+<section id="main">
+    <div class="wrap">
+        <div class="row">
+            <h4 id="date"> Thu Oct 27, 2016 </h4>
+
+            <h1 id="title">How I had access to the sourcecode of more than 10.000 websites within just a few hours.</h1>
+            <div>
+                <article id="content">
+                    
+
+<p>Using git as a deployment tool is very common nowadays. There are a lot misconfigurations, allowing complete and full downloads of git repositories. Often this has been configured within the Continuous Integration workflow. Some people claim you can only download partial repositories (eg not the packed files), but thats simply not true. The downloaded repositories will contain the source code of the website or application, the configuration files, dependencies, and the commit history. Some of the tested websites do have enabled access to the .git folder on purpose. This is either because they are using some kind of static publishing like github pages or because they don&rsquo;t mind other having access to their opensource website.</p>
+
+<p>You can test if the repository has been deployed and is accessible by testing for the allowance of downloading the file /.git/config. If you will get a response containing the configuration of the repository, you are at risk of having the complete repository being downloadable (including commit messages, history, configurations).</p>
+
+<p>We&rsquo;ve created a mass scanner ANAM, which stands for Automated Network Analysis en Mass sends out raw tcp packets to each server, and will analyse the result upon receiving the packet. The benefit of this method is that you&rsquo;re able to run a lot more requests in parallel, allowing the network to do its work. This tool is great for automated discovery of vulnerabilities on a broad and large amount of hosts.</p>
+
+<p>Currently ANAM only supports http, but adding extra protocols shouldn&rsquo;t be that difficult.</p>
+
+<p>The Alexa top 1 Million list has been used for the automated discovery, future scans will be done using the Verisign domain list or other domain lists.</p>
+
+<p>Each vulnerable site will be automatically emailed to its abuse and whois records, disclosing the vulnerability and referencing to the draft publication of this article. We&rsquo;ve acknowledged them about the publication date of the article (7th of October). Because of the amount of vulnerabilities discovered, we couldn&rsquo;t responsible disclose each and every vulnerability individually.</p>
+
+<p>You can find the git repo downloader using http here:
+xxxx</p>
+
+<h4 id="risks:b128b7694e4de962e0088bcb1bcb254f">Risks</h4>
+
+<ul>
+<li>complete source code download, allowing vulnerabilities to be found more easily</li>
+<li>download of configuration files, containing oauth configuration, database configs, passwords etc.</li>
+<li>complete commit history of the source code including logs</li>
+<li>all the rest that has been submitted</li>
+<li>company secrets</li>
+</ul>
+
+<h4 id="mitigation:b128b7694e4de962e0088bcb1bcb254f">Mitigation</h4>
+
+<p>The fix is easy, just disable your configuration to not serve hidden (.git / .svn) files. For convenience we&rsquo;ve included the following configuration for Apache and Nginx. There is also some bad news though, because you cannot be certain who had access to your sourcecode, you need to renew all secrets (oauth tokens, passwords) if those where in your repository.</p>
+
+<p>For Apache:</p>
+
+<pre><code>RewriteEngine on
+
+RewriteCond %{THE_REQUEST} ^.*/\.
+RewriteRule ^(.*)$ - [R=404]
+</code></pre>
+
+<p>And for Nginx:</p>
+
+<pre><code># Deny all attempts to access hidden files
+# such as .htaccess, .htpasswd, .DS_Store (Mac).
+location ~ /\. {
+deny all;
+}
+</code></pre>
+
+<p>And for Lighttpd (thanks to fflores):</p>
+
+<pre><code># Deny access to hidden files 
+$HTTP[&quot;url&quot;] =~ &quot;/\.&quot; { 
+    url.access-deny = (&quot;&quot;) 
+} 
+</code></pre>
+
+<p>The same configuration error allows download of svn repositories (using /.svn/entries).</p>
+
+<p>The list of vulnerable websites:
+&hellip;</p>
+
+<h4 id="disclosure-process:b128b7694e4de962e0088bcb1bcb254f">Disclosure process</h4>
+
+<ul>
+<li>26 september found vulnerable sites</li>
+<li>27 september t/m 21 october mass responsible disclosure</li>
+<li>31 october public disclosure</li>
+</ul>
+
+<h4 id="mass-disclosure:b128b7694e4de962e0088bcb1bcb254f">Mass disclosure</h4>
+
+<p>Every domain we&rsquo;ve found with the information disclosure, we&rsquo;ve sent the following email.</p>
+
+<pre><code>During our research project, which you can read about in draft at http://blog.dutchcoders.io/p/72673b02-dbfb-491a-9995-6b03bf58fd74/, we've encountered that *|DOMAIN|* is vulnerable to information disclosure, by allowing public download of the .git repository. This allows everyone to download the source code of your website and application. 
+
+The url *|URL|* contains the complete commit history, as this is proof that it is possible to download the complete repository itself. See attached two files, the git HEAD and LOG file. 
+
+Currently we are in progress to disclose our discoveries, and we're aiming to publish the article within two weeks. We are sending our findings to the info, security and abuse email addresses of the domain.
+
+We are sending this email in an automated way, and we are aware that in some cases this is expected behaviour. If that is the case, you can ignore this message. We believe that this issue endangers your site, application and data that we needed to inform you.
+
+Let me know if you've got any questions,
+
+</code></pre>
+
+<h4 id="feedback:b128b7694e4de962e0088bcb1bcb254f">Feedback</h4>
+
+<p>Everyone reacts differently on a responsible disclosure. We&rsquo;ll put here some excerpts of the reactions.</p>
+
+<p><strong>Vice Security</strong></p>
+
+<blockquote>
+<p>No matter though&hellip;thank you for pointing this issue out to us and for providing an excellent blog post to accompany it. We will work towards addressing this issue.</p>
+
+<p>While we currently don&rsquo;t offer monetary compensation, but we appreciate your efforts and
+most importantly that you responsibly disclosed them to us. We&rsquo;d like to send you some swag  &gt;in the mean time&hellip;are you interested?</p>
+
+<p>Keep up the good work!</p>
+</blockquote>
+
+<p><strong>mariadb.com (10/10/2016)</strong></p>
+
+<blockquote>
+<p>Thank you for your report.  This has now been resolved and is no longer vulnerable.</p>
+</blockquote>
+
+<p><strong>glocals.com (10/10/2016)</strong>
+&gt; Thanks a lot Remco, that&rsquo;s very helpful (and a bad surprise). We&rsquo;re on it.</p>
+
+<p><strong>pelago.events (10/10/2016)</strong>
+&gt; I am writing to thank you for your advice.  My devops administrator confirmed your point and we are taking steps to tighten up access to our GIT activity.</p>
+
+<p><strong>tinymixtapes.com (10/10/2016)</strong>
+&gt; Hello, thanks so much for this information. Incredibly helpful. We&rsquo;ve fixed it now, and just wanted to know that we really appreciate this heads-up email.</p>
+
+<p><strong>nutanix.com (10/8/2016)</strong></p>
+
+<blockquote>
+<p>Thank you for letting us know (Nutanix) about the security vulnerability. We&rsquo;ve intentionally combed the servers to attempt to find examples of those holes and we can&rsquo;t find any more using manual searching. Do you have a scanning script that you use to seek that out? I would love to either write my own or use yours to scan some other properties that I have that haven&rsquo;t been strangthened against this issue.</p>
+
+<p>Thank you again for reaching out regarding that hole – I really appreciate it.</p>
+</blockquote>
+
+<p><strong>pulsepoint.com (10/8/2016)</strong>
+&gt; This issue should be resolved now. Please don’t hesitate to reach out if you see anything else.</p>
+
+<p><strong>iDoctors</strong>
+&gt; Thank you very much for your extremely precious information. We&rsquo;ve immediately applied your solution and works great!</p>
+
+<p><strong>Gamer Launch</strong>
+&gt; Thank you for the responsible disclosure. We&rsquo;ve fixed this issue. We don&rsquo;t currently have a monetary bug bounty process, but I would be happy to send you t-shirts or gaming related swag if you could provide an address for shipping. Just let me know.</p>
+
+<p><strong>Akzo Nobel</strong>
+&gt;</p>
+
+<p><strong>Truity.com</strong>
+&gt; Thanks for letting us know. Our developers looked into this immediately and were able to find and fix a vulnerability.</p>
+
+<p><strong>Eventmobi (eventmobi.com)</strong></p>
+
+<blockquote>
+<p>First off, I want to applaud your use of responsible disclosure and giving us time to react to this before it becomes a free-for-all in the wild. I also want to express my gratitude for your detailed blog post. I found it very easy to confirm your findings and explain to our engineers the threat and exploitability of this issue.</p>
+
+<p>As your tool detected, we did indeed have issues with www.eventmobi.com which is our marketing site.
+I read your blog post and as you can guess, this is one of our older deployments that use a tool in the git repo to deploy changes and also include the .git folder itself. This is something we&rsquo;ve fixed and updated in our repo. We&rsquo;re also going back through our access logs to see how many times it has been accessed. Could you provide us with an idea of how often your tool may have done so?</p>
+
+<p>I&rsquo;m also happy to report that I verified our 20 or so product team repositories for this issue. Thankfully, our CI process was designed to opt-in files, rather than use all files in the repository during the packaging process &ndash; so unless we manually add .git to that list of opt-ins, it&rsquo;ll never make it out to our live systems!</p>
+
+<p>Like Vice Security from your blog post, EventMobi does not currently offer monetary compensation for disclosures, but hopefully it&rsquo;s clear we take them seriously. That said, if you&rsquo;re interested, we&rsquo;re willing to send you a bit of EventMobi swag if you&rsquo;d like! I&rsquo;ve also shared your blog post around my network of developers so they can get a leg up on this as well.</p>
+
+<p>Keep up the good work and looking forward to the results of this disclosure when it goes public!</p>
+</blockquote>
+
+<p><strong>Knewton (knewton.com)</strong>
+&gt; Thank you so much for the responsible disclosure! Our marketing site was in fact affected by this permissions issue and, with the help of your awesome blog post, we were able to quickly start the remediation process. Please let me know your t-shirt size and a good mailing address so we can get you some Knewton swag.</p>
+
+<blockquote>
+<p>Again, we greatly appreciate the disclosure before going public. Awesome work. I look forward to reading your future blog posts.</p>
+</blockquote>
+
+<p>We haven&rsquo;t got any response to about 95% of the mails we&rsquo;ve sent. Those sites are still vulnerable. We even had two responses to be removed from the mailinglist.</p>
+
+<h4 id="cloning-git-repositories:b128b7694e4de962e0088bcb1bcb254f">Cloning GIT repositories</h4>
+
+<p>On some occasions you can just easily clone the git repositories (depending on webserver configuration), for other occasions I’ve created an application that will download the files that it has access to.</p>
+
+<pre><code>/.git/config (contains the different branches and origins)
+/.git/index (contains the git index)
+/.git/HEAD (contains the current reference to HEAD)
+/.git/packed-refs (contains the references to the packed archives)
+/.git/logs/HEAD (contains all commit messages)
+</code></pre>
+
+<p>The key file is the /.git/ORIG_HEAD. That file contains the SHA1 address of the commit parent. From this file you can enumerate through all objects.</p>
+
+<pre><code>/.git/objects/{first two chars sha1}/{next chars of sha1}
+u = requests.get(base + ‘/objects/’ + objh[:2] + ‘/’ + objh[2:])
+</code></pre>
+
+<p>The file is zlib compressed and the first 4 bytes contains the item identifier.</p>
+
+<pre><code>db =  zlib.decompress(body)
+</code></pre>
+
+<p>This can be:</p>
+
+<ul>
+<li>blob (a file)</li>
+<li>comm (a commit), commit information and reference to tree</li>
+<li>tree (a tree), reference to the files and references to objects in the tree</li>
+</ul>
+
+<p>Git has the habit to create packed files of older objects now an then. Those can be found in the .git/packed-refs/ folder.</p>
+
+<p>As an example you can see boost.org. This website is a clone of a public github repository, so in this case it is in purpose, or it cannot do any harm.</p>
+
+<p><a href="http://www.boost.org/.git/config">http://www.boost.org/.git/config</a>
+<a href="http://www.boost.org/.git/logs/HEAD">http://www.boost.org/.git/logs/HEAD</a>
+<a href="http://www.boost.org/.git/index">http://www.boost.org/.git/index</a></p>
+
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+   <div class="wrap">
+    <div class="section-header">
+        <h2>CONTACT US</h2>
+        <p>For any question, concern or suggestion you have</p>
+        <hr>
+    </div>
+    <a id="btn-contact" href="mailto:hello@internetsecure.today" class="btn btn-transparent ">REACH OUT</a>
+    </div>
+</section>
+
+
+</div>
+
+</div>
+
+
+<div class="footer-container">
+    <footer>
+        <div class="wrap">
+            <div class="row">
+                <a class="donate" href="bitcoin:15F9gwrtuMjAUWxaCMKvSkzEfWbJEizEXs" label="Bitcoin+Donation" style="word-wrap: break-word;">
+                    <img border="0" src=" /images/bitcoin.png" style="margin: 0 auto;;">
+                </a>
+            </div>
+            <div class="row footer-sign-up">
+                <div class="col-md-5 col-xs-12">
+                    <p>Keep safe, subscribe to be the updated on our campaigns.</p>
+                </div>
+                <div class="col-md-7 col-xs-12">
+                    <form method="post" class="form-inline ng-pristine ng-valid" action="//dutchcoders.us9.list-manage.com/subscribe/post?u=1ef324743ad8d5b203c7fa759&amp;id=2f1b189bd5">
+    <input type="email" id="email" name="EMAIL" class="l" placeholder="Your email">
+    <button type="submit" class="btn" name="subscribe">Subscribe</button>
+    <div style="position: absolute; left: -5000px;">
+        <input type="text" name="b_1ef324743ad8d5b203c7fa759_2f1b189bd5" tabindex="-1" value="">
+    </div>
+</form>
+                </div>
+            </div>
+
+            <hr class="hidden-xs">
+            <div class="navbar  hidden-xs">
+                <ul class="navigation nav nav-justified">
+                    <li>
+    <a href="#navbar" class="scrollto">Home</a>
+</li>
+<li>
+    <a href="#info" class="scrollto">About </a>
+</li>
+<li>
+    <a href="#stats" class="scrollto">Statistics </a>
+</li>
+<li>
+    <a href="#campaigns" class="scrollto">Campaigns </a>
+</li>
+<li>
+    <a href="#sponsors" class="scrollto">Sponsors </a>
+</li>
+<li>
+    <a href="#team" class="scrollto">Team </a>
+</li>
+<li>
+    <a href="#contact" class="scrollto">Contact</a>
+</li>
+<li>
+    <a href="https://twitter.com/internetsecuretoday" class="twitter-follow-button text-center" data-show-count="false">Twitter</a>
+</li>
+
+                </ul>
+            </div>
+            <div class="container in-holland ">
+                <img src="http://internetsecure.today//images/Logo-white.png" alt="Founded in Holland">
+                <br><br>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+</body>
+</html>
