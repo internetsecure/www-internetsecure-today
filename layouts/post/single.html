@@ -1,0 +1,39 @@
+{{ $baseurl := .Site.BaseURL }}
+
+{{ partial "header.html" . }}
+
+<section id="home" class=" "   data-vide-bg="videos/honeytrap-background" data-vide-options="playbackRate: 0.7, position: 0% 0%">
+  {{ partial "navbar.html" . }}
+</section>
+
+<section id="main">
+    <div class="wrap">
+        <div class="row">
+            <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </h4>
+
+            <h1 id="title">{{ .Title }}</h1>
+            <div>
+                <article id="content">
+                    {{ .Content }}
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+   <div class="wrap">
+    <div class="section-header">
+        <h2>CONTACT US</h2>
+        <p>For any question, concern or suggestion you have</p>
+        <hr>
+    </div>
+    <a id="btn-contact" href="mailto:hello@internetsecure.today" class="btn btn-transparent ">REACH OUT</a>
+    </div>
+</section>
+
+
+{{ partial "footer.html" . }}
+
+</body>
+</html>
