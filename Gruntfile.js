@@ -94,8 +94,8 @@ module.exports = function (grunt) {
         'gh-pages': {
             options: {
                 base: 'dist',
-                branch: 'master',
-                repo: 'git@git.dewt.io:honeytrap-web.git'
+                branch: 'gh-pages',
+                repo: 'git@github.com:internetsecure/www-internetsecure-today.git'
             },
             src: ['**']
         }
