@@ -11,10 +11,10 @@
     
     <item>
       <title>How I had access to the sourcecode of more than 10.000 websites in just a few hours.</title>
-      <link>http://internetsecure.today/campaign/sourcecode-access-through-git-repository/</link>
+      <link>http://internetsecure.today/campaign/sourcecode-access-through-public-available-git-repository/</link>
       <pubDate>Thu, 27 Oct 2016 11:27:27 -0400</pubDate>
       
-      <guid>http://internetsecure.today/campaign/sourcecode-access-through-git-repository/</guid>
+      <guid>http://internetsecure.today/campaign/sourcecode-access-through-public-available-git-repository/</guid>
       <description>
 
 &lt;p&gt;Using git as a deployment tool is very common nowadays. There are a lot misconfigurations, allowing complete and full downloads of git repositories. Often this has been configured within the Continuous Integration workflow. Some people claim you can only download partial repositories (eg not the packed files), but thats simply not true. The downloaded repositories will contain the source code of the website or application, the configuration files, dependencies, and the commit history. Some of the tested websites do have enabled access to the .git folder on purpose. This is either because they are using some kind of static publishing like github pages or because they don&amp;rsquo;t mind other having access to their opensource website.&lt;/p&gt;
