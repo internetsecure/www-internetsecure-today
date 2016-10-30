@@ -1,30 +1,27 @@
 +++
 date        = "2016-10-27T11:27:27-04:00"
-title       = "How I had access to the sourcecode of more than 10.000 websites within just a few hours."
-slug        = "access-sourcecode-through-git-repository"
+title       = "How I had access to the sourcecode of more than 10.000 websites in just a few hours."
+slug        = "sourcecode-access-through-public-available-git-repository"
 +++
 
 Using git as a deployment tool is very common nowadays. There are a lot misconfigurations, allowing complete and full downloads of git repositories. Often this has been configured within the Continuous Integration workflow. Some people claim you can only download partial repositories (eg not the packed files), but thats simply not true. The downloaded repositories will contain the source code of the website or application, the configuration files, dependencies, and the commit history. Some of the tested websites do have enabled access to the .git folder on purpose. This is either because they are using some kind of static publishing like github pages or because they don't mind other having access to their opensource website.
 
-You can test if the repository has been deployed and is accessible by testing for the allowance of downloading the file /.git/config. If you will get a response containing the configuration of the repository, you are at risk of having the complete repository being downloadable (including commit messages, history, configurations).
+You can test if your applications repository has been deployed and is publicly accessible by downloading the file /.git/config. If you will get a response containing the configuration of the repository, you are at risk of having the complete repository being downloadable (including commit messages, history, configurations).
 
 We've created a mass scanner ANAM, which stands for Automated Network Analysis en Mass sends out raw tcp packets to each server, and will analyse the result upon receiving the packet. The benefit of this method is that you're able to run a lot more requests in parallel, allowing the network to do its work. This tool is great for automated discovery of vulnerabilities on a broad and large amount of hosts. 
 
-Currently ANAM supports both support for http and https protocols. At the moment we're just scanning for one vulnerability at a time, but we love ANAM and improving it daily.
+Currently ANAM supports both http and https protocols. At the moment we're just scanning for one vulnerability at a time, but we love ANAM and are improving her daily.
 
-The Alexa top 1 Million list has been used for the automated discovery, future scans will be done using the Verisign domain list or other domain lists. 
+The Alexa top 1 Million list has been used for the automated discovery, future scans will use other lists as well. 
 
 Each vulnerable site will be automatically emailed to its abuse and whois records, disclosing the vulnerability and referencing to the draft publication of this article. We've acknowledged them about the publication date of the article (7th of October). Because of the amount of vulnerabilities discovered, we couldn't responsible disclose each and every vulnerability individually. 
 
-You can find the git repo downloader using http here:
-xxxx
-
 #### Risks
 
-* complete source code download, allowing vulnerabilities to be found more easily
-* download of configuration files, containing oauth configuration, database configs, passwords etc.
+* complete source code download, allowing other vulnerabilities to be found more easily
+* download of configuration files, containing oauth configuration, database configurations, passwords etc.
 * complete commit history of the source code including logs
-* all the rest that has been submitted
+* all the rest that has been committed to the repository
 * company secrets
 
 #### Mitigation
@@ -65,9 +62,6 @@ $HTTP["url"] =~ "/\." {
 ```
 
 The same configuration error allows download of svn repositories (using /.svn/entries).
-
-The list of vulnerable websites:
-...
 
 #### Disclosure process
 
