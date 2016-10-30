@@ -59,7 +59,6 @@ module.exports = function (grunt) {
                 path: 'http://localhost:1313/'
             }
         },
-
         concurrent: {
             options: {
                 logConcurrentOutput: true
@@ -80,17 +79,19 @@ module.exports = function (grunt) {
         usemin: {
             html: ['dist/index.html']
         },
-        copy: {
-            html: {
-                src: 'dist/index.html',
-                dest: 'dist/index.html'
-            }
-        },
+	copy: {
+	    dist: {
+		files: [{
+		    expand: true,
+		    dot: true,
+		    src: ['CNAME'],
+		    dest: "dist",
+		}],
+	    }
+	},
         clean: {
             dist: ["dist/"]
         },
-
-
         'gh-pages': {
             options: {
                 base: 'dist',
@@ -99,11 +100,10 @@ module.exports = function (grunt) {
             },
             src: ['**']
         }
-
     });
 
     grunt.registerTask('serve', [ 'concurrent:dev', 'env:server']);
     // grunt.registerTask('serve', [ 'open:dev','concurrent:dev', 'env:server']);
-    grunt.registerTask('build', ['sass:dist', 'clean:dist', 'shell:build', 'useminPrepare', 'concat:generated', 'cssmin:generated', 'uglify:generated', 'usemin']);
+    grunt.registerTask('build', ['sass:dist', 'clean:dist', 'shell:build', 'useminPrepare', 'concat:generated', 'cssmin:generated', 'uglify:generated', 'usemin', 'copy']);
     grunt.registerTask('deploy', ['build', 'gh-pages']);
 };
