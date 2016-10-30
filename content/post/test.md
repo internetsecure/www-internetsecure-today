@@ -31,12 +31,20 @@ xxxx
 
 The fix is easy, just disable your configuration to not serve hidden (.git / .svn) files. For convenience we've included the following configuration for Apache and Nginx. There is also some bad news though, because you cannot be certain who had access to your sourcecode, you need to renew all secrets (oauth tokens, passwords) if those where in your repository. 
 
-For Apache:
+For Apache (in .htaccess):
 ```
 RewriteEngine on
 
 RewriteCond %{THE_REQUEST} ^.*/\.
 RewriteRule ^(.*)$ - [R=404]
+```
+
+For Apache (in /etc/apache2/apache2.conf thanks to Raz0rwire):
+```
+<Directorymatch "^/.*/\.git/">
+  Order deny,allow
+  Deny from all
+</Directorymatch>
 ```
 
 And for Nginx:
@@ -102,12 +110,15 @@ Everyone reacts differently on a responsible disclosure. We'll put here some exc
 > Thank you for your report.  This has now been resolved and is no longer vulnerable. 
 
 **glocals.com (10/10/2016)**
+
 > Thanks a lot Remco, that's very helpful (and a bad surprise). We're on it. 
 
 **pelago.events (10/10/2016)**
+
 > I am writing to thank you for your advice.  My devops administrator confirmed your point and we are taking steps to tighten up access to our GIT activity.
 
 **tinymixtapes.com (10/10/2016)**
+
 > Hello, thanks so much for this information. Incredibly helpful. We've fixed it now, and just wanted to know that we really appreciate this heads-up email.
 
 **nutanix.com (10/8/2016)**
@@ -117,18 +128,23 @@ Everyone reacts differently on a responsible disclosure. We'll put here some exc
 > Thank you again for reaching out regarding that hole – I really appreciate it. 
 
 **pulsepoint.com (10/8/2016)**
+
 > This issue should be resolved now. Please don’t hesitate to reach out if you see anything else. 
 
 **iDoctors**
+
 > Thank you very much for your extremely precious information. We've immediately applied your solution and works great! 
 
 **Gamer Launch**
+
 > Thank you for the responsible disclosure. We've fixed this issue. We don't currently have a monetary bug bounty process, but I would be happy to send you t-shirts or gaming related swag if you could provide an address for shipping. Just let me know. 
 
 **Akzo Nobel**
+
 > 
 
 **Truity.com**
+
 > Thanks for letting us know. Our developers looked into this immediately and were able to find and fix a vulnerability.
 
 **Eventmobi (eventmobi.com)**
@@ -145,6 +161,7 @@ I read your blog post and as you can guess, this is one of our older deployments
 > Keep up the good work and looking forward to the results of this disclosure when it goes public!
 
 **Knewton (knewton.com)**
+
 > Thank you so much for the responsible disclosure! Our marketing site was in fact affected by this permissions issue and, with the help of your awesome blog post, we were able to quickly start the remediation process. Please let me know your t-shirt size and a good mailing address so we can get you some Knewton swag. 
 
 > Again, we greatly appreciate the disclosure before going public. Awesome work. I look forward to reading your future blog posts. 

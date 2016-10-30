@@ -18,4 +18,5 @@ bower_components
 node_modules
 .sass-cache
 .tmp
-.grunt  
+.grunt
+.idea

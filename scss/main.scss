@@ -13,7 +13,7 @@ $headings-font-family: "Rubik",
 "Helvetica Neue",
 Helvetica,
 Arial,
-sans-serif!default;
+sans-serif !default;
 // Brand colors
 $orange: #fbad17;
 $blue: #20334d;
@@ -36,6 +36,7 @@ $border-radius-base: 2px;
 @import "global";
 @import "buttons";
 @import "forms";
+@import "circle";
 
 /*@import "animation";*/
 
@@ -123,7 +124,7 @@ section {
     position: relative;
     background: $blue;
     z-index: 100;
-   background: url(../videos/honeytrap-background.jpg);
+    background: url(../videos/honeytrap-background.jpg);
 
     background-size: cover;
     padding: 0px;
@@ -163,18 +164,18 @@ section {
         align-self: center;
     }
 
-/*    @media (max-width: $screen-sm) {
-        .hero-container {
-            padding-top: 50px;
-            padding-bottom: 70px;
-            h1 {
-                font-size: 30px;
+    /*    @media (max-width: $screen-sm) {
+            .hero-container {
+                padding-top: 50px;
+                padding-bottom: 70px;
+                h1 {
+                    font-size: 30px;
+                }
+                p {
+                    font-size: 20px;
+                }
             }
-            p {
-                font-size: 20px;
-            }
-        }
-    }*/
+        }*/
     @media (max-width: $screen-xs) {
         h1 {
             font-size: 17px;
@@ -200,8 +201,8 @@ section {
             margin-right: 0;
         }
     }
-    
-        @media (min-width: 500px) {
+
+    @media (min-width: 500px) {
         .hero-container {
             padding-top: 40px;
             padding-bottom: 50px;
@@ -213,7 +214,7 @@ section {
             font-size: 18px;
         }
     }
-      @media (min-width: 900px) {
+    @media (min-width: 900px) {
         .hero-container {
             padding-top: 130px;
             padding-bottom: 160px;
@@ -224,11 +225,11 @@ section {
         p {
             font-size: 25px;
         }
-          
+
     }
 }
 
-#info {
+#info, #campaigns, #sponsors, #team {
     .icon-container {
         height: 100%;
     }
@@ -244,6 +245,7 @@ section {
     }
     h3 {
         font-size: 16px;
+        color: #333333;
     }
     h3 {
         margin: 0;
@@ -265,13 +267,38 @@ section {
                 font-size: 16px;
             }
         }
-            .row {
-        margin-top: 0;
-    }
+        .row {
+            margin-top: 0;
+        }
         .col-xs-12 {
             margin-top: 30px;
         }
     }
+
+    .block-link {
+        text-decoration: none;
+    }
+
+    small {
+        color: #c1c5ca;
+        margin-top: -10px;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    p.read-more {
+        color: #444;
+        font-size: 13px;
+    }
+}
+
+#sponsors .icon p, #team .icon p{
+    font-size: 16px;
+}
+
+#team .icon img{
+    border-radius: 5px;
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.2);
 }
 
 #text {
@@ -382,4 +409,45 @@ section {
 
 svg .icon {
     font-family: FontAwesome;
+}
+
+.c100 {
+    & > span {
+        font-family: "Hind", Helvetica, Arial, sans-serif;
+        font-weight: 300;
+        color: #888f98;
+    }
+
+    background-color: #b8c2cd;
+    .bar, .fill {
+        border: 0.08em solid #836DAF !important;
+    }
+}
+
+.c100 > span {
+    color: #836daf !important;
+}
+
+.c100:hover > span, .c100.hovered > span {
+    line-height: 3.53em;
+}
+
+.inner-content.text-center {
+    p {
+        margin-top: 15px;
+        font-size: 20px;
+        font-weight: 500;
+        color: #888f98;
+    }
+}
+
+.single{
+    p{
+        font-size: 15px;
+        line-height: 23px;
+    }
+
+    h4{
+        margin-top: 30px;
+    }
 }
