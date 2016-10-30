@@ -80,11 +80,11 @@
 
 <p>Using git as a deployment tool is very common nowadays. There are a lot misconfigurations, allowing complete and full downloads of git repositories. Often this has been configured within the Continuous Integration workflow. Some people claim you can only download partial repositories (eg not the packed files), but thats simply not true. The downloaded repositories will contain the source code of the website or application, the configuration files, dependencies, and the commit history. Some of the tested websites do have enabled access to the .git folder on purpose. This is either because they are using some kind of static publishing like github pages or because they don&rsquo;t mind other having access to their opensource website.</p>
 
-<p>You can test if the repository has been deployed and is accessible by testing for the allowance of downloading the file /.git/config. If you will get a response containing the configuration of the repository, you are at risk of having the complete repository being downloadable (including commit messages, history, configurations).</p>
+<p>You can test if your applications repository has been deployed and is publicly accessible by downloading the file /.git/config. If you will get a response containing the configuration of the repository, you are at risk of having the complete repository being downloadable (including commit messages, history, configurations).</p>
 
 <p>We&rsquo;ve created a mass scanner ANAM, which stands for Automated Network Analysis en Mass sends out raw tcp packets to each server, and will analyse the result upon receiving the packet. The benefit of this method is that you&rsquo;re able to run a lot more requests in parallel, allowing the network to do its work. This tool is great for automated discovery of vulnerabilities on a broad and large amount of hosts.</p>
 
-<p>Currently ANAM supports both http and https protocols. At the moment we&rsquo;re just scanning for one vulnerability at a time, but we love ANAM and improving it daily.</p>
+<p>Currently ANAM supports both http and https protocols. At the moment we&rsquo;re just scanning for one vulnerability at a time, but we love ANAM and are improving her daily.</p>
 
 <p>The Alexa top 1 Million list has been used for the automated discovery, future scans will use other lists as well.</p>
 
@@ -93,10 +93,10 @@
 <h4 id="risks:b128b7694e4de962e0088bcb1bcb254f">Risks</h4>
 
 <ul>
-<li>complete source code download, allowing vulnerabilities to be found more easily</li>
-<li>download of configuration files, containing oauth configuration, database configs, passwords etc.</li>
+<li>complete source code download, allowing other vulnerabilities to be found more easily</li>
+<li>download of configuration files, containing oauth configuration, database configurations, passwords etc.</li>
 <li>complete commit history of the source code including logs</li>
-<li>all the rest that has been submitted</li>
+<li>all the rest that has been committed to the repository</li>
 <li>company secrets</li>
 </ul>
 
@@ -138,9 +138,6 @@ $HTTP[&quot;url&quot;] =~ &quot;/\.&quot; {
 </code></pre>
 
 <p>The same configuration error allows download of svn repositories (using /.svn/entries).</p>
-
-<p>The list of vulnerable websites:
-&hellip;</p>
 
 <h4 id="disclosure-process:b128b7694e4de962e0088bcb1bcb254f">Disclosure process</h4>
 
