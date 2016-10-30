@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on InternetSecure.today</title>
-    <link>http://internetsecure.today/post/</link>
+    <link>http://internetsecure.today/post/index.xml</link>
     <description>Recent content in Posts on InternetSecure.today</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -32,7 +32,7 @@
 &lt;p&gt;You can find the git repo downloader using http here:
 xxxx&lt;/p&gt;
 
-&lt;h4 id=&#34;risks:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Risks&lt;/h4&gt;
+&lt;h4 id=&#34;risks&#34;&gt;Risks&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;complete source code download, allowing vulnerabilities to be found more easily&lt;/li&gt;
@@ -42,16 +42,24 @@ xxxx&lt;/p&gt;
 &lt;li&gt;company secrets&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&#34;mitigation:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Mitigation&lt;/h4&gt;
+&lt;h4 id=&#34;mitigation&#34;&gt;Mitigation&lt;/h4&gt;
 
 &lt;p&gt;The fix is easy, just disable your configuration to not serve hidden (.git / .svn) files. For convenience we&amp;rsquo;ve included the following configuration for Apache and Nginx. There is also some bad news though, because you cannot be certain who had access to your sourcecode, you need to renew all secrets (oauth tokens, passwords) if those where in your repository.&lt;/p&gt;
 
-&lt;p&gt;For Apache:&lt;/p&gt;
+&lt;p&gt;For Apache (in .htaccess):&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;RewriteEngine on
 
 RewriteCond %{THE_REQUEST} ^.*/\.
 RewriteRule ^(.*)$ - [R=404]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For Apache (in /etc/apache2/apache2.conf thanks to Raz0rwire):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;Directorymatch &amp;quot;^/.*/\.git/&amp;quot;&amp;gt;
+  Order deny,allow
+  Deny from all
+&amp;lt;/Directorymatch&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;And for Nginx:&lt;/p&gt;
@@ -76,7 +84,7 @@ $HTTP[&amp;quot;url&amp;quot;] =~ &amp;quot;/\.&amp;quot; {
 &lt;p&gt;The list of vulnerable websites:
 &amp;hellip;&lt;/p&gt;
 
-&lt;h4 id=&#34;disclosure-process:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Disclosure process&lt;/h4&gt;
+&lt;h4 id=&#34;disclosure-process&#34;&gt;Disclosure process&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;26 september found vulnerable sites&lt;/li&gt;
@@ -84,7 +92,7 @@ $HTTP[&amp;quot;url&amp;quot;] =~ &amp;quot;/\.&amp;quot; {
 &lt;li&gt;31 october public disclosure&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&#34;mass-disclosure:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Mass disclosure&lt;/h4&gt;
+&lt;h4 id=&#34;mass-disclosure&#34;&gt;Mass disclosure&lt;/h4&gt;
 
 &lt;p&gt;Every domain we&amp;rsquo;ve found with the information disclosure, we&amp;rsquo;ve sent the following email.&lt;/p&gt;
 
@@ -100,7 +108,7 @@ Let me know if you&#39;ve got any questions,
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;feedback:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Feedback&lt;/h4&gt;
+&lt;h4 id=&#34;feedback&#34;&gt;Feedback&lt;/h4&gt;
 
 &lt;p&gt;Everyone reacts differently on a responsible disclosure. We&amp;rsquo;ll put here some excerpts of the reactions.&lt;/p&gt;
 
@@ -121,14 +129,23 @@ most importantly that you responsibly disclosed them to us. We&amp;rsquo;d like 
 &lt;p&gt;Thank you for your report.  This has now been resolved and is no longer vulnerable.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;strong&gt;glocals.com (10/10/2016)&lt;/strong&gt;
-&amp;gt; Thanks a lot Remco, that&amp;rsquo;s very helpful (and a bad surprise). We&amp;rsquo;re on it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;glocals.com (10/10/2016)&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;pelago.events (10/10/2016)&lt;/strong&gt;
-&amp;gt; I am writing to thank you for your advice.  My devops administrator confirmed your point and we are taking steps to tighten up access to our GIT activity.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thanks a lot Remco, that&amp;rsquo;s very helpful (and a bad surprise). We&amp;rsquo;re on it.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;&lt;strong&gt;tinymixtapes.com (10/10/2016)&lt;/strong&gt;
-&amp;gt; Hello, thanks so much for this information. Incredibly helpful. We&amp;rsquo;ve fixed it now, and just wanted to know that we really appreciate this heads-up email.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;pelago.events (10/10/2016)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;I am writing to thank you for your advice.  My devops administrator confirmed your point and we are taking steps to tighten up access to our GIT activity.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;tinymixtapes.com (10/10/2016)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Hello, thanks so much for this information. Incredibly helpful. We&amp;rsquo;ve fixed it now, and just wanted to know that we really appreciate this heads-up email.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;&lt;strong&gt;nutanix.com (10/8/2016)&lt;/strong&gt;&lt;/p&gt;
 
@@ -138,20 +155,34 @@ most importantly that you responsibly disclosed them to us. We&amp;rsquo;d like 
 &lt;p&gt;Thank you again for reaching out regarding that hole – I really appreciate it.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;strong&gt;pulsepoint.com (10/8/2016)&lt;/strong&gt;
-&amp;gt; This issue should be resolved now. Please don’t hesitate to reach out if you see anything else.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;pulsepoint.com (10/8/2016)&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;iDoctors&lt;/strong&gt;
-&amp;gt; Thank you very much for your extremely precious information. We&amp;rsquo;ve immediately applied your solution and works great!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This issue should be resolved now. Please don’t hesitate to reach out if you see anything else.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;&lt;strong&gt;Gamer Launch&lt;/strong&gt;
-&amp;gt; Thank you for the responsible disclosure. We&amp;rsquo;ve fixed this issue. We don&amp;rsquo;t currently have a monetary bug bounty process, but I would be happy to send you t-shirts or gaming related swag if you could provide an address for shipping. Just let me know.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;iDoctors&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Akzo Nobel&lt;/strong&gt;
-&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thank you very much for your extremely precious information. We&amp;rsquo;ve immediately applied your solution and works great!&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;&lt;strong&gt;Truity.com&lt;/strong&gt;
-&amp;gt; Thanks for letting us know. Our developers looked into this immediately and were able to find and fix a vulnerability.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Gamer Launch&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Thank you for the responsible disclosure. We&amp;rsquo;ve fixed this issue. We don&amp;rsquo;t currently have a monetary bug bounty process, but I would be happy to send you t-shirts or gaming related swag if you could provide an address for shipping. Just let me know.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Akzo Nobel&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Truity.com&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Thanks for letting us know. Our developers looked into this immediately and were able to find and fix a vulnerability.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;&lt;strong&gt;Eventmobi (eventmobi.com)&lt;/strong&gt;&lt;/p&gt;
 
@@ -168,16 +199,17 @@ I read your blog post and as you can guess, this is one of our older deployments
 &lt;p&gt;Keep up the good work and looking forward to the results of this disclosure when it goes public!&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;strong&gt;Knewton (knewton.com)&lt;/strong&gt;
-&amp;gt; Thank you so much for the responsible disclosure! Our marketing site was in fact affected by this permissions issue and, with the help of your awesome blog post, we were able to quickly start the remediation process. Please let me know your t-shirt size and a good mailing address so we can get you some Knewton swag.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Knewton (knewton.com)&lt;/strong&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
+&lt;p&gt;Thank you so much for the responsible disclosure! Our marketing site was in fact affected by this permissions issue and, with the help of your awesome blog post, we were able to quickly start the remediation process. Please let me know your t-shirt size and a good mailing address so we can get you some Knewton swag.&lt;/p&gt;
+
 &lt;p&gt;Again, we greatly appreciate the disclosure before going public. Awesome work. I look forward to reading your future blog posts.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;We haven&amp;rsquo;t got any response to about 95% of the mails we&amp;rsquo;ve sent. Those sites are still vulnerable. We even had two responses to be removed from the mailinglist.&lt;/p&gt;
 
-&lt;h4 id=&#34;cloning-git-repositories:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Cloning GIT repositories&lt;/h4&gt;
+&lt;h4 id=&#34;cloning-git-repositories&#34;&gt;Cloning GIT repositories&lt;/h4&gt;
 
 &lt;p&gt;On some occasions you can just easily clone the git repositories (depending on webserver configuration), for other occasions I’ve created an application that will download the files that it has access to.&lt;/p&gt;
 
