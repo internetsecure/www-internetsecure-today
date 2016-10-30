@@ -23,14 +23,11 @@
 
 &lt;p&gt;We&amp;rsquo;ve created a mass scanner ANAM, which stands for Automated Network Analysis en Mass sends out raw tcp packets to each server, and will analyse the result upon receiving the packet. The benefit of this method is that you&amp;rsquo;re able to run a lot more requests in parallel, allowing the network to do its work. This tool is great for automated discovery of vulnerabilities on a broad and large amount of hosts.&lt;/p&gt;
 
-&lt;p&gt;Currently ANAM supports both support for http and https protocols. At the moment we&amp;rsquo;re just scanning for one vulnerability at a time, but we love ANAM and improving it daily.&lt;/p&gt;
+&lt;p&gt;Currently ANAM supports both http and https protocols. At the moment we&amp;rsquo;re just scanning for one vulnerability at a time, but we love ANAM and improving it daily.&lt;/p&gt;
 
-&lt;p&gt;The Alexa top 1 Million list has been used for the automated discovery, future scans will be done using the Verisign domain list or other domain lists.&lt;/p&gt;
+&lt;p&gt;The Alexa top 1 Million list has been used for the automated discovery, future scans will use other lists as well.&lt;/p&gt;
 
 &lt;p&gt;Each vulnerable site will be automatically emailed to its abuse and whois records, disclosing the vulnerability and referencing to the draft publication of this article. We&amp;rsquo;ve acknowledged them about the publication date of the article (7th of October). Because of the amount of vulnerabilities discovered, we couldn&amp;rsquo;t responsible disclose each and every vulnerability individually.&lt;/p&gt;
-
-&lt;p&gt;You can find the git repo downloader using http here:
-xxxx&lt;/p&gt;
 
 &lt;h4 id=&#34;risks:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Risks&lt;/h4&gt;
 
