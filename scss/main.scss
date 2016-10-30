@@ -443,9 +443,12 @@ svg .icon {
 }
 
 .single{
-    p{
-        font-size: 15px;
-        line-height: 23px;
+    #content {
+        font-size: 1.3em;
+    }
+
+    code {
+        background-color: #f5f4f4;
     }
 
     h4{

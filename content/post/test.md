@@ -10,7 +10,7 @@ You can test if the repository has been deployed and is accessible by testing fo
 
 We've created a mass scanner ANAM, which stands for Automated Network Analysis en Mass sends out raw tcp packets to each server, and will analyse the result upon receiving the packet. The benefit of this method is that you're able to run a lot more requests in parallel, allowing the network to do its work. This tool is great for automated discovery of vulnerabilities on a broad and large amount of hosts. 
 
-Currently ANAM only supports http, but adding extra protocols shouldn't be that difficult. 
+Currently ANAM supports both support for http and https protocols. At the moment we're just scanning for one vulnerability at a time, but we love ANAM and improving it daily.
 
 The Alexa top 1 Million list has been used for the automated discovery, future scans will be done using the Verisign domain list or other domain lists. 
 
@@ -79,22 +79,19 @@ The list of vulnerable websites:
 
 Every domain we've found with the information disclosure, we've sent the following email.
 
-```
-During our research project, which you can read about in draft at http://blog.dutchcoders.io/p/72673b02-dbfb-491a-9995-6b03bf58fd74/, we've encountered that *|DOMAIN|* is vulnerable to information disclosure, by allowing public download of the .git repository. This allows everyone to download the source code of your website and application. 
+> During our research project, which you can read about in draft at http://blog.dutchcoders.io/p/72673b02-dbfb-491a-9995-6b03bf58fd74/, we've encountered that *|DOMAIN|* is vulnerable to information disclosure, by allowing public download of the .git repository. This allows everyone to download the source code of your website and application. 
 
-The url *|URL|* contains the complete commit history, as this is proof that it is possible to download the complete repository itself. See attached two files, the git HEAD and LOG file. 
+> The url *|URL|* contains the complete commit history, as this is proof that it is possible to download the complete repository itself. See attached two files, the git HEAD and LOG file. 
 
-Currently we are in progress to disclose our discoveries, and we're aiming to publish the article within two weeks. We are sending our findings to the info, security and abuse email addresses of the domain.
+> Currently we are in progress to disclose our discoveries, and we're aiming to publish the article within two weeks. We are sending our findings to the info, security and abuse email addresses of the domain.
 
-We are sending this email in an automated way, and we are aware that in some cases this is expected behaviour. If that is the case, you can ignore this message. We believe that this issue endangers your site, application and data that we needed to inform you.
+> We are sending this email in an automated way, and we are aware that in some cases this is expected behaviour. If that is the case, you can ignore this message. We believe that this issue endangers your site, application and data that we needed to inform you.
 
-Let me know if you've got any questions,
-
-```
+> Let me know if you've got any questions,
 
 #### Feedback
 
-Everyone reacts differently on a responsible disclosure. We'll put here some excerpts of the reactions.
+Everyone reacts differently on responsible disclosure. Some of the reactions:
 
 **Vice Security**
 
@@ -166,9 +163,9 @@ I read your blog post and as you can guess, this is one of our older deployments
 
 > Again, we greatly appreciate the disclosure before going public. Awesome work. I look forward to reading your future blog posts. 
 
-We haven't got any response to about 95% of the mails we've sent. Those sites are still vulnerable. We even had two responses to be removed from the mailinglist. 
+We haven't got any response to about 95% of the mails we've sent. Those sites are still vulnerable. We even had two complaints to be removed from the mailinglist. 
 
-#### Cloning GIT repositories
+#### About cloning GIT repositories
 
 On some occasions you can just easily clone the git repositories (depending on webserver configuration), for other occasions I’ve created an application that will download the files that it has access to.
 
