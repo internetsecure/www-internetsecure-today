@@ -65,8 +65,9 @@ body {
 
 section {
     padding: 50px 0;
+    border-bottom: 1px solid #bfc3c8;
     @media (min-width: 1600px) {
-        padding: 100px;
+        padding: 50px 0px;
     }
 }
 
