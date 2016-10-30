@@ -84,7 +84,7 @@
 
 <p>We&rsquo;ve created a mass scanner ANAM, which stands for Automated Network Analysis en Mass sends out raw tcp packets to each server, and will analyse the result upon receiving the packet. The benefit of this method is that you&rsquo;re able to run a lot more requests in parallel, allowing the network to do its work. This tool is great for automated discovery of vulnerabilities on a broad and large amount of hosts.</p>
 
-<p>Currently ANAM only supports http, but adding extra protocols shouldn&rsquo;t be that difficult.</p>
+<p>Currently ANAM supports both support for http and https protocols. At the moment we&rsquo;re just scanning for one vulnerability at a time, but we love ANAM and improving it daily.</p>
 
 <p>The Alexa top 1 Million list has been used for the automated discovery, future scans will be done using the Verisign domain list or other domain lists.</p>
 
@@ -93,7 +93,7 @@
 <p>You can find the git repo downloader using http here:
 xxxx</p>
 
-<h4 id="risks">Risks</h4>
+<h4 id="risks:b128b7694e4de962e0088bcb1bcb254f">Risks</h4>
 
 <ul>
 <li>complete source code download, allowing vulnerabilities to be found more easily</li>
@@ -103,7 +103,7 @@ xxxx</p>
 <li>company secrets</li>
 </ul>
 
-<h4 id="mitigation">Mitigation</h4>
+<h4 id="mitigation:b128b7694e4de962e0088bcb1bcb254f">Mitigation</h4>
 
 <p>The fix is easy, just disable your configuration to not serve hidden (.git / .svn) files. For convenience we&rsquo;ve included the following configuration for Apache and Nginx. There is also some bad news though, because you cannot be certain who had access to your sourcecode, you need to renew all secrets (oauth tokens, passwords) if those where in your repository.</p>
 
@@ -145,7 +145,7 @@ $HTTP[&quot;url&quot;] =~ &quot;/\.&quot; {
 <p>The list of vulnerable websites:
 &hellip;</p>
 
-<h4 id="disclosure-process">Disclosure process</h4>
+<h4 id="disclosure-process:b128b7694e4de962e0088bcb1bcb254f">Disclosure process</h4>
 
 <ul>
 <li>26 september found vulnerable sites</li>
@@ -153,25 +153,25 @@ $HTTP[&quot;url&quot;] =~ &quot;/\.&quot; {
 <li>31 october public disclosure</li>
 </ul>
 
-<h4 id="mass-disclosure">Mass disclosure</h4>
+<h4 id="mass-disclosure:b128b7694e4de962e0088bcb1bcb254f">Mass disclosure</h4>
 
 <p>Every domain we&rsquo;ve found with the information disclosure, we&rsquo;ve sent the following email.</p>
 
-<pre><code>During our research project, which you can read about in draft at http://blog.dutchcoders.io/p/72673b02-dbfb-491a-9995-6b03bf58fd74/, we've encountered that *|DOMAIN|* is vulnerable to information disclosure, by allowing public download of the .git repository. This allows everyone to download the source code of your website and application. 
+<blockquote>
+<p>During our research project, which you can read about in draft at <a href="http://blog.dutchcoders.io/p/72673b02-dbfb-491a-9995-6b03bf58fd74/">http://blog.dutchcoders.io/p/72673b02-dbfb-491a-9995-6b03bf58fd74/</a>, we&rsquo;ve encountered that <em>|DOMAIN|</em> is vulnerable to information disclosure, by allowing public download of the .git repository. This allows everyone to download the source code of your website and application.</p>
 
-The url *|URL|* contains the complete commit history, as this is proof that it is possible to download the complete repository itself. See attached two files, the git HEAD and LOG file. 
+<p>The url <em>|URL|</em> contains the complete commit history, as this is proof that it is possible to download the complete repository itself. See attached two files, the git HEAD and LOG file.</p>
 
-Currently we are in progress to disclose our discoveries, and we're aiming to publish the article within two weeks. We are sending our findings to the info, security and abuse email addresses of the domain.
+<p>Currently we are in progress to disclose our discoveries, and we&rsquo;re aiming to publish the article within two weeks. We are sending our findings to the info, security and abuse email addresses of the domain.</p>
 
-We are sending this email in an automated way, and we are aware that in some cases this is expected behaviour. If that is the case, you can ignore this message. We believe that this issue endangers your site, application and data that we needed to inform you.
+<p>We are sending this email in an automated way, and we are aware that in some cases this is expected behaviour. If that is the case, you can ignore this message. We believe that this issue endangers your site, application and data that we needed to inform you.</p>
 
-Let me know if you've got any questions,
+<p>Let me know if you&rsquo;ve got any questions,</p>
+</blockquote>
 
-</code></pre>
+<h4 id="feedback:b128b7694e4de962e0088bcb1bcb254f">Feedback</h4>
 
-<h4 id="feedback">Feedback</h4>
-
-<p>Everyone reacts differently on a responsible disclosure. We&rsquo;ll put here some excerpts of the reactions.</p>
+<p>Everyone reacts differently on responsible disclosure. Some of the reactions:</p>
 
 <p><strong>Vice Security</strong></p>
 
@@ -268,9 +268,9 @@ I read your blog post and as you can guess, this is one of our older deployments
 <p>Again, we greatly appreciate the disclosure before going public. Awesome work. I look forward to reading your future blog posts.</p>
 </blockquote>
 
-<p>We haven&rsquo;t got any response to about 95% of the mails we&rsquo;ve sent. Those sites are still vulnerable. We even had two responses to be removed from the mailinglist.</p>
+<p>We haven&rsquo;t got any response to about 95% of the mails we&rsquo;ve sent. Those sites are still vulnerable. We even had two complaints to be removed from the mailinglist.</p>
 
-<h4 id="cloning-git-repositories">Cloning GIT repositories</h4>
+<h4 id="about-cloning-git-repositories:b128b7694e4de962e0088bcb1bcb254f">About cloning GIT repositories</h4>
 
 <p>On some occasions you can just easily clone the git repositories (depending on webserver configuration), for other occasions I’ve created an application that will download the files that it has access to.</p>
 
@@ -341,7 +341,7 @@ u = requests.get(base + ‘/objects/’ + objh[:2] + ‘/’ + objh[2:])
             </div>
             <div class="row footer-sign-up">
                 <div class="col-md-5 col-xs-12">
-                    <p>Keep safe, subscribe to be the updated on our campaigns.</p>
+                    <p>Keep safe, subscribe to be updated on our campaigns and news.</p>
                 </div>
                 <div class="col-md-7 col-xs-12">
                     <form method="post" class="form-inline ng-pristine ng-valid" action="//dutchcoders.us9.list-manage.com/subscribe/post?u=1ef324743ad8d5b203c7fa759&amp;id=2f1b189bd5">
