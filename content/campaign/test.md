@@ -38,9 +38,9 @@ RewriteRule ^(.*)$ - [R=404]
 
 For Apache (in /etc/apache2/apache2.conf thanks to Raz0rwire):
 ```
-<Directorymatch "^/.*/\.git/">
-  Order deny,allow
-  Deny from all
+<Directorymatch "^/.*/\..*/">
+    Order deny,allow
+    Deny from all
 </Directorymatch>
 ```
 
