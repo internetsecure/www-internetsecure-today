@@ -116,9 +116,9 @@ RewriteRule ^(.*)$ - [R=404]
 
 <p>For Apache (in /etc/apache2/apache2.conf thanks to Raz0rwire):</p>
 
-<pre><code>&lt;Directorymatch &quot;^/.*/\.git/&quot;&gt;
-  Order deny,allow
-  Deny from all
+<pre><code>&lt;Directorymatch &quot;^/.*/\..*/&quot;&gt;
+    Order deny,allow
+    Deny from all
 &lt;/Directorymatch&gt;
 </code></pre>
 

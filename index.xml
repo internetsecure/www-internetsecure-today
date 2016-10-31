@@ -55,9 +55,9 @@ RewriteRule ^(.*)$ - [R=404]
 
 &lt;p&gt;For Apache (in /etc/apache2/apache2.conf thanks to Raz0rwire):&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;Directorymatch &amp;quot;^/.*/\.git/&amp;quot;&amp;gt;
-  Order deny,allow
-  Deny from all
+&lt;pre&gt;&lt;code&gt;&amp;lt;Directorymatch &amp;quot;^/.*/\..*/&amp;quot;&amp;gt;
+    Order deny,allow
+    Deny from all
 &amp;lt;/Directorymatch&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
