@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Campaigns on InternetSecure.today</title>
-    <link>http://internetsecure.today/campaign/index.xml</link>
+    <link>http://internetsecure.today/campaign/</link>
     <description>Recent content in Campaigns on InternetSecure.today</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -29,7 +29,7 @@
 
 &lt;p&gt;Each vulnerable site will be automatically emailed to its abuse and whois records, disclosing the vulnerability and referencing to the draft publication of this article. We&amp;rsquo;ve acknowledged them about the publication date of the article (7th of October). Because of the amount of vulnerabilities discovered, we couldn&amp;rsquo;t responsible disclose each and every vulnerability individually.&lt;/p&gt;
 
-&lt;h4 id=&#34;risks&#34;&gt;Risks&lt;/h4&gt;
+&lt;h4 id=&#34;risks:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Risks&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;complete source code download, allowing other vulnerabilities to be found more easily&lt;/li&gt;
@@ -39,7 +39,9 @@
 &lt;li&gt;company secrets&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&#34;mitigation&#34;&gt;Mitigation&lt;/h4&gt;
+&lt;p&gt;In a few cases we&amp;rsquo;ve seen the git configuration contains username and passwords as well. This allows attackers to make changes to the repository (and all other repositories that user has access to)  as well.&lt;/p&gt;
+
+&lt;h4 id=&#34;mitigation:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Mitigation&lt;/h4&gt;
 
 &lt;p&gt;The fix is easy, just disable your configuration to not serve hidden (.git / .svn) files. For convenience we&amp;rsquo;ve included the following configuration for Apache and Nginx. There is also some bad news though, because you cannot be certain who had access to your sourcecode, you need to renew all secrets (oauth tokens, passwords) if those where in your repository.&lt;/p&gt;
 
@@ -53,9 +55,9 @@ RewriteRule ^(.*)$ - [R=404]
 
 &lt;p&gt;For Apache (in /etc/apache2/apache2.conf thanks to Raz0rwire):&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;Directorymatch &amp;quot;^/.*/\..*/&amp;quot;&amp;gt;
-    Order deny,allow
-    Deny from all
+&lt;pre&gt;&lt;code&gt;&amp;lt;Directorymatch &amp;quot;^/.*/\.git/&amp;quot;&amp;gt;
+  Order deny,allow
+  Deny from all
 &amp;lt;/Directorymatch&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -78,7 +80,7 @@ $HTTP[&amp;quot;url&amp;quot;] =~ &amp;quot;/\.&amp;quot; {
 
 &lt;p&gt;The same configuration error allows download of svn repositories (using /.svn/entries).&lt;/p&gt;
 
-&lt;h4 id=&#34;disclosure-process&#34;&gt;Disclosure process&lt;/h4&gt;
+&lt;h4 id=&#34;disclosure-process:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Disclosure process&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;26 september found vulnerable sites&lt;/li&gt;
@@ -86,7 +88,7 @@ $HTTP[&amp;quot;url&amp;quot;] =~ &amp;quot;/\.&amp;quot; {
 &lt;li&gt;31 october public disclosure&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&#34;mass-disclosure&#34;&gt;Mass disclosure&lt;/h4&gt;
+&lt;h4 id=&#34;mass-disclosure:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Mass disclosure&lt;/h4&gt;
 
 &lt;p&gt;Every domain we&amp;rsquo;ve found with the information disclosure, we&amp;rsquo;ve sent the following email.&lt;/p&gt;
 
@@ -102,7 +104,7 @@ $HTTP[&amp;quot;url&amp;quot;] =~ &amp;quot;/\.&amp;quot; {
 &lt;p&gt;Let me know if you&amp;rsquo;ve got any questions,&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h4 id=&#34;feedback&#34;&gt;Feedback&lt;/h4&gt;
+&lt;h4 id=&#34;feedback:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Feedback&lt;/h4&gt;
 
 &lt;p&gt;Everyone reacts differently on responsible disclosure. Some of the reactions:&lt;/p&gt;
 
@@ -203,7 +205,7 @@ I read your blog post and as you can guess, this is one of our older deployments
 
 &lt;p&gt;We haven&amp;rsquo;t got any response to about 95% of the mails we&amp;rsquo;ve sent. Those sites are still vulnerable. We even had two complaints to be removed from the mailinglist.&lt;/p&gt;
 
-&lt;h4 id=&#34;about-cloning-git-repositories&#34;&gt;About cloning GIT repositories&lt;/h4&gt;
+&lt;h4 id=&#34;about-cloning-git-repositories:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;About cloning GIT repositories&lt;/h4&gt;
 
 &lt;p&gt;On some occasions you can just easily clone the git repositories (depending on webserver configuration), for other occasions I’ve created an application that will download the files that it has access to.&lt;/p&gt;
 
