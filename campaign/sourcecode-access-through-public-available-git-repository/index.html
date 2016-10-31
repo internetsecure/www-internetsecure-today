@@ -100,6 +100,8 @@
 <li>company secrets</li>
 </ul>
 
+<p>In a few cases we&rsquo;ve seen the git configuration contains username and passwords as well. This allows attackers to make changes to the repository (and all other repositories that user has access to)  as well.</p>
+
 <h4 id="mitigation:b128b7694e4de962e0088bcb1bcb254f">Mitigation</h4>
 
 <p>The fix is easy, just disable your configuration to not serve hidden (.git / .svn) files. For convenience we&rsquo;ve included the following configuration for Apache and Nginx. There is also some bad news though, because you cannot be certain who had access to your sourcecode, you need to renew all secrets (oauth tokens, passwords) if those where in your repository.</p>
