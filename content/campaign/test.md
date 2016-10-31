@@ -24,6 +24,9 @@ Each vulnerable site will be automatically emailed to its abuse and whois record
 * all the rest that has been committed to the repository
 * company secrets
 
+
+In a few cases we've seen the git configuration contains username and passwords as well. This allows attackers to make changes to the repository (and all other repositories that user has access to)  as well.
+
 #### Mitigation
 
 The fix is easy, just disable your configuration to not serve hidden (.git / .svn) files. For convenience we've included the following configuration for Apache and Nginx. There is also some bad news though, because you cannot be certain who had access to your sourcecode, you need to renew all secrets (oauth tokens, passwords) if those where in your repository. 
