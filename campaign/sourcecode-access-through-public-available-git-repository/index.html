@@ -59,7 +59,7 @@
     <a href="http://internetsecure.today/#contact" class="scrollto">Contact</a>
 </li>
 <li>
-    <a href="https://twitter.com/InternetSeToday" class="twitter-follow-button text-center" data-show-count="false">Twitter</a>
+    <a href="https://twitter.com/internetsecuretoday" class="twitter-follow-button text-center" data-show-count="false">Twitter</a>
 </li>
 
         </ul>
@@ -90,7 +90,7 @@
 
 <p>Each vulnerable site will be automatically emailed to its abuse and whois records, disclosing the vulnerability and referencing to the draft publication of this article. We&rsquo;ve acknowledged them about the publication date of the article (7th of October). Because of the amount of vulnerabilities discovered, we couldn&rsquo;t responsible disclose each and every vulnerability individually.</p>
 
-<h4 id="risks:b128b7694e4de962e0088bcb1bcb254f">Risks</h4>
+<h4 id="risks">Risks</h4>
 
 <ul>
 <li>complete source code download, allowing other vulnerabilities to be found more easily</li>
@@ -100,9 +100,7 @@
 <li>company secrets</li>
 </ul>
 
-<p>In a few cases we&rsquo;ve seen the git configuration contains username and passwords as well. This allows attackers to make changes to the repository (and all other repositories that user has access to)  as well.</p>
-
-<h4 id="mitigation:b128b7694e4de962e0088bcb1bcb254f">Mitigation</h4>
+<h4 id="mitigation">Mitigation</h4>
 
 <p>The fix is easy, just disable your configuration to not serve hidden (.git / .svn) files. For convenience we&rsquo;ve included the following configuration for Apache and Nginx. There is also some bad news though, because you cannot be certain who had access to your sourcecode, you need to renew all secrets (oauth tokens, passwords) if those where in your repository.</p>
 
@@ -116,9 +114,9 @@ RewriteRule ^(.*)$ - [R=404]
 
 <p>For Apache (in /etc/apache2/apache2.conf thanks to Raz0rwire):</p>
 
-<pre><code>&lt;Directorymatch &quot;^/.*/\.git/&quot;&gt;
-  Order deny,allow
-  Deny from all
+<pre><code>&lt;Directorymatch &quot;^/.*/\..*/&quot;&gt;
+    Order deny,allow
+    Deny from all
 &lt;/Directorymatch&gt;
 </code></pre>
 
@@ -141,7 +139,7 @@ $HTTP[&quot;url&quot;] =~ &quot;/\.&quot; {
 
 <p>The same configuration error allows download of svn repositories (using /.svn/entries).</p>
 
-<h4 id="disclosure-process:b128b7694e4de962e0088bcb1bcb254f">Disclosure process</h4>
+<h4 id="disclosure-process">Disclosure process</h4>
 
 <ul>
 <li>26 september found vulnerable sites</li>
@@ -149,7 +147,7 @@ $HTTP[&quot;url&quot;] =~ &quot;/\.&quot; {
 <li>31 october public disclosure</li>
 </ul>
 
-<h4 id="mass-disclosure:b128b7694e4de962e0088bcb1bcb254f">Mass disclosure</h4>
+<h4 id="mass-disclosure">Mass disclosure</h4>
 
 <p>Every domain we&rsquo;ve found with the information disclosure, we&rsquo;ve sent the following email.</p>
 
@@ -165,7 +163,7 @@ $HTTP[&quot;url&quot;] =~ &quot;/\.&quot; {
 <p>Let me know if you&rsquo;ve got any questions,</p>
 </blockquote>
 
-<h4 id="feedback:b128b7694e4de962e0088bcb1bcb254f">Feedback</h4>
+<h4 id="feedback">Feedback</h4>
 
 <p>Everyone reacts differently on responsible disclosure. Some of the reactions:</p>
 
@@ -266,7 +264,7 @@ I read your blog post and as you can guess, this is one of our older deployments
 
 <p>We haven&rsquo;t got any response to about 95% of the mails we&rsquo;ve sent. Those sites are still vulnerable. We even had two complaints to be removed from the mailinglist.</p>
 
-<h4 id="about-cloning-git-repositories:b128b7694e4de962e0088bcb1bcb254f">About cloning GIT repositories</h4>
+<h4 id="about-cloning-git-repositories">About cloning GIT repositories</h4>
 
 <p>On some occasions you can just easily clone the git repositories (depending on webserver configuration), for other occasions I’ve created an application that will download the files that it has access to.</p>
 
@@ -376,7 +374,7 @@ u = requests.get(base + ‘/objects/’ + objh[:2] + ‘/’ + objh[2:])
     <a href="http://internetsecure.today/#contact" class="scrollto">Contact</a>
 </li>
 <li>
-    <a href="https://twitter.com/InternetSeToday" class="twitter-follow-button text-center" data-show-count="false">Twitter</a>
+    <a href="https://twitter.com/internetsecuretoday" class="twitter-follow-button text-center" data-show-count="false">Twitter</a>
 </li>
 
                 </ul>
