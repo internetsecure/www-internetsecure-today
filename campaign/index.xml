@@ -10,7 +10,7 @@
     <atom:link href="http://internetsecure.today/campaign/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>How I had access to the sourcecode of more than 10.000 websites in just a few hours.</title>
+      <title>How I had access to the sourcecode of more than 15.000 websites in just a few hours.</title>
       <link>http://internetsecure.today/campaign/sourcecode-access-through-public-available-git-repository/</link>
       <pubDate>Thu, 27 Oct 2016 11:27:27 -0400</pubDate>
       
@@ -203,7 +203,7 @@ I read your blog post and as you can guess, this is one of our older deployments
 &lt;p&gt;Again, we greatly appreciate the disclosure before going public. Awesome work. I look forward to reading your future blog posts.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;** Sony **
+&lt;p&gt;&lt;strong&gt;Sony&lt;/strong&gt;
 &amp;gt; Thank you for your submission to Secure@Sony. We wanted to let you know that we’ve addressed the issue you identified. We hope you won’t hesitate to contact us again if you find any additional security issues in the future.&lt;/p&gt;
 
 &lt;blockquote&gt;
